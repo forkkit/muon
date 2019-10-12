@@ -23,6 +23,8 @@ yarn
 yarn build
 ```
 
+Ensure you have [fileb0x](https://github.com/UnnoTed/fileb0x) installed and in your `$PATH` variable by running `go get github.com/UnnoTed/fileb0x` 
+
 Now, back in the `create-react-app` directory, package the assets by running either:
 ```
 fileb0x b0x.yml
@@ -45,3 +47,6 @@ go run main.go
 ```
 
 You will likely have ran into an error. This is because we are dynamically linking to Ultralight, meaning that it's libraries are resolved when the application is started. To fix this, you'll need the take the [Ultralight Libraries](https://github.com/ultralight-ux/ultralight#getting-the-latest-sdk) (`.dll` for Windows, `.so` for Unix, `.dylib` for Darwin) and put them in the same directory as your application.
+
+**Note for Linux users**
+- Linux by default only looks for shared objects at a specific system path, if you would preffer to load the shared objects from a different directory, simply set the `LD_LIBRARY_PATH` environment variable to the new directory containing the libraries. (`.` being current directory)
